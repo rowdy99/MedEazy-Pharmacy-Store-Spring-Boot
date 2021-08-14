@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MedEazy Notice</title>
+    <link rel="icon" href="/img/medezy.jpeg" />
+
+    <script src="https://kit.fontawesome.com/3c78e2f7ea.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu:wght@700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet">
+    <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+</head>
+
+<body class="galary-body">
+
+
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top" style=" background: linear-gradient(324deg, rgba(48,207,208,1) 0%, rgba(144,238,144,1) 48%, rgba(0,212,255,1) 100%);">
+        <div class="container d-flex align-items-center">
+
+
+
+
+
+
+
+            <img  src="/img/medezy.jpeg" alt="..." width="70" height="70" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <h1 class="logo me-auto"><a href="">MedEazy</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar">
+
+
+                <ul>
+                    <li class="active"><a href="/">Home</a></li>
+
+
+                    <li><a href="/noticepage" th:href="@{/noticepage}">Notice</a></li>
+                    <li><a class="nav-link scrollto" href="/contact_form"  th:href="@{/contact_form}">Franchise partner</a></li>
+
+                    <li class="dropdown" sec:authorize="!isAuthenticated()"><a class="getstarted scrollto text-center" href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
+
+                        <ul>
+                            <li><a href="/registrasi"> <i class="fas fa-user-circle"></i>Sign Up</a></li>
+
+                            <li><a href="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+
+                        </ul>
+                    </li>
+
+                    <ul class="nav navbar-nav navbar-right"
+                        sec:authorize="isAuthenticated()">
+                        <li class="dropdown"><a class="dropdown-toggle"
+                                                data-toggle="dropdown" href="#" sec:authentication="name"><span
+                                class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">Logout</a></li>
+                            </ul></li>
+                    </ul>
+                    <form class="d-flex" id="searchbar" action="/search" method="get">
+                        <input aria-label="Search" class="form-control me-2" name="search" placeholder="Search notice by title" type="search">
+                        <button class="btn btn-info btn-sm " type="submit">Search</button>
+                    </form>
+                </ul>
+                <i class="mobile-nav-toggle bi bi-list "></i>
+
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <br>
+    <br>
+    <br>
+
+
+
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media  align-items-center">
+
+            <div class="book-body text-center">
+                <img loading="lazy" src="../img/partner.png" alt="..." width="80" height="80" class=" rounded-circle img-thumbnail shadow-sm">
+                <h4 class="brand text-center m-1">MedEazy Franchise Partner</h4>
+
+                <p class=" brand-des font-weight-normal text-muted text-center mb-0">@medeazy.in  · Pharmacy / Drugstore</p>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <!--    <div class="row">-->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact bg-light">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Become Our Franchise Partner</h2>
+                <p>If you have any query or delivery related issue or you try to reach to our company address then you can visite this location on specific time such as 8.00am to 5.00pm. You need to carry your original documents so that we can easily identify you  .</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-5 d-flex align-items-stretch">
+                    <div class="info">
+                        <div class="address">
+                            <i class="bi bi-geo-alt"></i>
+                            <h4>Location:</h4>
+                            <p>128/A , C/o.Dr.Nandu Babu, Kendua Bazar, Po:- Kusunda, Dhanbad, Jharkhand, Pin:- 828116</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>info@medeazy.in</p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="bi bi-phone"></i>
+                            <h4>Call:</h4>
+                            <p>+91 7564947428</p>
+                        </div>
+                        <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=675&amp;height=400&amp;hl=en&amp;q=Dr.Nandu Babu, Kendua Bazar&amp;t=h&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.fridaynightfunkin.net/">FNF Download</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                    <form th:action="@{/contact_form}" method="post" role="form" class="php-email-form">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="fullName">Your Name</label>
+                                <input type="text" name="fullName" class="form-control" id="fullName" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="email">Your Email</label>
+                                <input type="email" class="form-control" name="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Phone Number</label>
+                            <input type="tel" class="form-control" name="tel" id="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Message</label>
+                            <textarea class="form-control" name="content" rows="10" required></textarea>
+                        </div>
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center"><button type="submit" value="Send">Send Message</button></div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,714 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org">
+<head>
+	<title>MedEazy</title>
+	<link rel="icon" href="/img/medezy.jpeg" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<script src="https://kit.fontawesome.com/3c78e2f7ea.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu:wght@700&display=swap"
+		  rel="stylesheet">
+
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+	<!-- Vendor CSS Files -->
+	<link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+	<link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+	<link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+	<link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet">
+	<link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+	<!-- Template Main CSS File -->
+	<link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+</head>
+<style>
+
+
+	tr{
+		transition: all .2s ease-in;
+		cursor: pointer;
+	}
+
+	tr:hover{
+		background-color: #f5f5f5;
+		transform: scale(1.02);
+	}
+	#example{
+		border-collapse: collapse;
+	}
+
+</style>
+<body>
+
+
+		                            <!-- Home Page -->
+		<div  sec:authorize="!isAuthenticated()">
+
+
+             <!-- HOME PAGE CONTENT  -->
+
+			<!-- ======= Header ======= -->
+			<header id="header" class="fixed-top ">
+				<div class="container d-flex align-items-center">
+
+
+
+
+
+
+
+					<img  src="/img/medezy.jpeg" alt="..." width="70" height="70" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+					<h1 class="logo me-auto"><a href="">MedEazy</a></h1>
+					<!-- Uncomment below if you prefer to use an image logo -->
+					<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+					<nav id="navbar" class="navbar">
+
+
+						<ul>
+							<li class="active"><a href="/">Home</a></li>
+							<li><a class="nav-link scrollto" href="#about">About</a></li>
+
+							<li><a href="/noticepage" th:href="@{/noticepage}">Notice</a></li>
+							<li><a class="nav-link scrollto" href="/contact_form"  th:href="@{/contact_form}">Franchise partner</a></li>
+
+							<li class="dropdown" sec:authorize="!isAuthenticated()"><a class="getstarted scrollto text-center" href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
+
+								<ul>
+									<li><a href="/registrasi"> <i class="fas fa-user-circle"></i>Sign Up</a></li>
+
+									<li><a href="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+
+								</ul>
+							</li>
+
+							<ul class="nav navbar-nav navbar-right"
+								sec:authorize="isAuthenticated()">
+								<li class="dropdown"><a class="dropdown-toggle"
+														data-toggle="dropdown" href="#" sec:authentication="name"><span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="/logout">Logout</a></li>
+									</ul></li>
+							</ul>
+							<form class="d-flex" id="searchbar" action="/search" method="get">
+								<input aria-label="Search" class="form-control me-2" name="search" placeholder="Search notice by title" type="search">
+								<button class="btn btn-info btn-sm " type="submit">Search</button>
+							</form>
+						</ul>
+						<i class="mobile-nav-toggle bi bi-list "></i>
+
+					</nav><!-- .navbar -->
+
+				</div>
+			</header><!-- End Header -->
+
+			<!-- ======= Hero Section ======= -->
+			<section id="hero" class="d-flex align-items-center">
+
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+							<h1 class="heading">Online Pharmacy and Medical Store.</h1>
+							<h4 class="heading">MedEazy aspires to become the best online pharmacy and medical store in India.   </h4>
+							<div class="d-flex justify-content-center justify-content-lg-start">
+								<a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp"><img  src="/img/gplay.png" alt="..."  class="mr-3"></a>
+								<a href="https://www.youtube.com/embed/_DeJS7c10Pk" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+							</div>
+						</div>
+						<div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+							<img src="/img/store.png" class="img-fluid animated" alt="">
+						</div>
+					</div>
+				</div>
+
+			</section><!-- End Hero -->
+
+			<main id="main">
+
+				<!-- ======= Cliens Section ======= -->
+				<section id="cliens" class="cliens section-bg">
+					<div class="container">
+
+						<div class="row" data-aos="zoom-in">
+
+							<div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+								<img src="/img/clients/client-1.png" class="img-fluid" alt="">
+							</div>
+
+							<div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+								<img src="/img/clients/client-2.png" class="img-fluid" alt="">
+							</div>
+
+							<div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+								<img src="/img/clients/client-3.png" class="img-fluid" alt="">
+							</div>
+
+							<div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+								<img src="/img/clients/client-4.png" class="img-fluid" alt="">
+							</div>
+
+							<div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+								<img src="/img/clients/client-5.png" class="img-fluid" alt="">
+							</div>
+
+							<div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+								<img src="/img/clients/client-6.png" class="img-fluid" alt="">
+							</div>
+
+						</div>
+
+					</div>
+				</section><!-- End Cliens Section -->
+
+				<!-- ======= About Us Section ======= -->
+<!--				<section id="about" class="about">-->
+<!--					<div class="container" data-aos="fade-up">-->
+
+<!--						<div class="section-title">-->
+<!--							<h2>About Us</h2>-->
+<!--						</div>-->
+
+<!--						<div class="row content">-->
+<!--							<div class="col-lg-6">-->
+<!--								<p>-->
+<!--									Medeazy.in website and the mobile application is owned and provided by MedEazy Private Limited (hereinafter “MedEazy”).-->
+<!--								</p>-->
+<!--								<ul>-->
+<!--									<li><i class="ri-check-double-line"></i> We have excellent knowledge of drugs.</li>-->
+<!--									<li><i class="ri-check-double-line"></i> reviewing medications for safety and efficacy, and providing drug information.</li>-->
+<!--									<li><i class="ri-check-double-line"></i> therefore, are the experts on drug therapy and are the primary health professionals who optimize the use of medication for the benefit of the patients.</li>-->
+<!--								</ul>-->
+<!--							</div>-->
+<!--							<div class="col-lg-6 pt-4 pt-lg-0">-->
+<!--								<p>-->
+<!--									MedEazy is a company incorporated under the Companies Act, 2013. If you need any information or have a complaint about this website/mobile application or any of our services, please contact us by writing to us at info@medeazy.in or calling on +917564947428-->
+
+<!--								</p>-->
+<!--								<a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp" class="btn-learn-more">Learn More</a>-->
+<!--							</div>-->
+<!--						</div>-->
+
+<!--					</div>-->
+<!--				</section>&lt;!&ndash; End About Us Section &ndash;&gt;-->
+
+				<!-- ======= About Us Section ======= -->
+				<section id="why-us" class="why-us section-bg">
+					<div class="container-fluid" data-aos="fade-up">
+						<div class="section-title">
+							<h2>About Us</h2>
+						</div>
+						<div class="row">
+
+							<div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+								<div class="content">
+									<h3>Medeazy.in website and the mobile application <strong>is owned and provided by MedEazy Private Limited (hereinafter “MedEazy”).</strong></h3>
+									<p>
+										MedEazy is a company incorporated under the Companies Act, 2013. If you need any information or have a complaint about this website/mobile application or any of our services, please contact us by writing to us at info@medeazy.in or calling on +917564947428
+
+									</p>
+								</div>
+
+								<div class="accordion-list">
+									<ul>
+										<li>
+											<a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> We have excellent knowledge of drugs. <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+											<div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+												<p>
+													We have excellent knowledge of drugs, their mechanism of action, side effects, interactions, mobility and toxicity. At the same time, it requires knowledge of treatment and understanding of the pathological process.
+												</p>
+											</div>
+										</li>
+
+										<li>
+											<a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Reviewing medications. <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+											<div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+												<p>
+													The scope of pharmacy practice includes more traditional roles such as compounding and dispensing of medications, and it also includes more modern services related to health care, including clinical services, reviewing medications for safety and efficacy, and providing drug information.
+												</p>
+											</div>
+										</li>
+
+										<li>
+											<a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> The experts on drug therapy.  <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+											<div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+												<p>
+													The experts on drug therapy and are the primary health professionals who optimize the use of medication for the benefit of the patients.
+												</p>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+
+							</div>
+
+							<div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("/img/team.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+						</div>
+
+					</div>
+				</section><!-- End Why Us Section -->
+
+				<!-- ======= Skills Section ======= -->
+
+
+				<!-- ======= Services Section ======= -->
+				<section id="services" class="services section-bg">
+					<div class="container" data-aos="fade-up">
+
+						<div class="section-title">
+							<h2>Services</h2>
+							<p>The scope of pharmacy practice includes more traditional roles such as compounding and dispensing of medications, and it also includes more modern services related to health care, including clinical services, reviewing medications for safety and efficacy, and providing drug information.
+							</p>
+						</div>
+
+					</div>
+				</section><!-- End Services Section -->
+
+				<!-- ======= Cta Section ======= -->
+				<section id="cta" class="cta">
+					<div class="container">
+
+						<div class="row justify-content-center">
+							<div class="col-lg-6">
+								<img  src="/img/partner.png" alt="..." width="70" height="70" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+								<h4>Join Our Franchise Community</h4>
+								<p>To join our community you have to Fill the form after that we'll get in touch with you.</p>
+
+								<a href="/contact_form"><button type="button" class="btn btn-primary btn-sm">Click Me</button></a>
+
+							</div>
+						</div>
+
+					</div>
+				</section><!-- End Cta Section -->
+
+				<!-- ======= Portfolio Section ======= -->
+
+
+				<!-- ======= Team Section ======= -->
+
+
+				<!-- ======= Pricing Section ======= -->
+
+
+				<!-- ======= Frequently Asked Questions Section ======= -->
+				<section id="faq" class="faq section-bg">
+					<div class="container" data-aos="fade-up">
+
+						<div class="section-title">
+							<h2>Frequently Asked Questions</h2>
+							<p>With all the medications available today, the role of pharmacists is increasingly important to help people understand how to safely take medicines their doctor prescribed and how to safely take those they purchased from a store. </p>
+						</div>
+
+						<div class="faq-list">
+							<ul>
+								<li data-aos="fade-up" data-aos-delay="100">
+									<i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Why is a pharmacist important to my overall health? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+									<div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+										<p>
+											Pharmacists are well-versed in pharmacology, which is the branch of medicine that focuses on the uses and effects of drugs. Pharmacists understand the therapeutic roles of drugs and drug side effects and interactions with other drugs. Your pharmacist can help monitor these factors and which foods and activities can have an effect on your medications. Your pharmacist is a great resource.
+										</p>
+									</div>
+								</li>
+
+								<li data-aos="fade-up" data-aos-delay="200">
+									<i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed"> What if medications make me too sleepy? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+									<div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+										<p>
+											Some prescription and over-the-counter medications can make you drowsy. There are a lot of medications that are sedating, and that can lead to issues with balance. Dosing schedules are important when trying to avoid daytime drowsiness caused by certain medications. This is a particular problem with seniors because drowsiness can increase unstable walking and cause falls. Also, people need to be cautioned about driving while taking a medication that might make them drowsy. It is always best to check with your doctor or pharmacist before using any medication, especially if you are adding an OTC medication, which may not be part of your medical record.
+										</p>
+									</div>
+								</li>
+
+								<li data-aos="fade-up" data-aos-delay="300">
+									<i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">How does age increase the risk for medication side effects? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+									<div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+										<p>
+											There are medications that help memory, especially individuals with Alzheimer’s, but there are medications that can cloud memory and interfere with and exacerbate memory issues, and that’s something to watch for in the elderly. Some medications like certain sleep aids can leave people a little hazy, and they have a harder time waking up and standing up. If this happens, they may need talk to their doctor about reducing the medication’s dose.
+										</p>
+									</div>
+								</li>
+
+								<li data-aos="fade-up" data-aos-delay="400">
+									<i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">How long can medicine be used after the expiration date? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+									<div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+										<p>
+											There is some controversy when it comes to expiration dates, but I do think people need to be cognizant of expiration dates. Certain medications like insulin, nitroglycerin and liquid antibiotics are most sensitive to expiration dates. If you have questions about the potency and effectiveness of medications you take, always check with your doctor or pharmacist. You especially don’t want the elderly taking medication that expired years ago.
+										</p>
+									</div>
+								</li>
+
+								<li data-aos="fade-up" data-aos-delay="500">
+									<i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed"> How should medicines be stored? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+									<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+										<p>
+											Keep medications in a safe place and out of the reach of children and pets. Some medications need to be refrigerated, but the majority do not, and you can keep them in a dry place that’s not exposed to temperature extremes. Also, be sure not to mix up your medications. Keep each medication in its own distinct bottle unless someone is managing the dispensing of medicines via cassettes or pillboxes. Being able to distinguish one medication from another gets harder with age.
+										</p>
+									</div>
+								</li>
+
+								<li data-aos="fade-up" data-aos-delay="600">
+									<i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-6" class="collapsed"> What vaccinations are important for seniors?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+									<div id="faq-list-6" class="collapse" data-bs-parent=".faq-list">
+										<p>
+											People over age 65 are at higher risk for flu and should check with their doctor about the right flu vaccination. There are some restrictions for people with certain medical issues, but overall it’s recommended that most elderly people receive the flu shot. Also, anyone over 50 should consider the shingles vaccine, because singles has had a resurgence lately, especially among older people. If you don’t catch shingles in time, it has some long-term side effects including possible nerve pain and loss of vision. Also, for seniors 65 and older, the benefits of the pneumococcal vaccine is an important topic to discuss with their doctor.
+										</p>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+
+					</div>
+				</section><!-- End Frequently Asked Questions Section -->
+
+				<!-- ======= privacy policy ======= -->
+
+				<div class="modal fade bd-example-modal-lg" id="Privacy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="exampleModalLabel">Privacy Policy</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" style="white-space: pre-wrap">
+								<ul>
+									<p><strong>In this policy,</strong> the words "we", "our", and "us" refer to <strong>MedEazy Private Limited (“MedEazy")</strong> and the privacy mechanism outlined identify personally identifiable or personal information that may be collected, how such information is used, and the choices you have regarding our use of this information.
+									</p>
+									<p>  In addition to the terms stated in Terms of Use Agreement provided under this <strong>Website and app (iOS & Android),</strong> we are committed to protecting <strong>your privacy</strong>. Authorized representatives of MedEazy on a need to know basis only use any information received from you or a registered medical practitioner authorized by you. We constantly review our systems and data to secure your personal and health information. We will investigate any complaint or such actions with a view to prosecuting and/or taking civil proceedings to recover damages against those responsible. Any User who does not agree with any provisions of the same is required to leave the Website and app (iOS & Android) immediately. Should you disagree with policy and still continue to access the Website and app (iOS & Android) and provide your personal information, MedEazy disclaims all the liabilities arising therefrom.
+									</p>
+									<p>This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
+									</p>
+									<p>If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. <strong>We will not use or share your information with anyone except as described in this Privacy Policy</strong>.
+									</p>
+									<p>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Medeazy  unless otherwise defined in this Privacy Policy.
+									</p>
+									<p><strong>Information Collection and Use</strong></p>
+									<p>For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. The information that we request will be retained by us and used as described in this privacy policy.</p>
+									<p>The app <storng>does use third party services</storng>  that may collect information used to <strong>identify you.</strong></p>
+									<p>Link to privacy policy of third party service providers used by the app
+									<li>Google Play Services</li>
+									<li>Google Analytics for Firebase</li>
+									<li>Firebase Crashlytics</li>
+									<li>One Signal</li>
+									<li>Log Data</li>
+									</p>
+									<p>We want to inform you that whenever you use our Service, in a case of an error in the app we collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.</p>
+									<p><strong>Cookies</strong></p>
+									<p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+									</p>
+									<p>This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+									</p>
+									<p><strong>Service Providers</strong>
+									<p> We may employ third-party companies and individuals due to the following reasons:</p>
+									<li>To facilitate our Service;</li>
+									<li>To provide the Service on our behalf;</li>
+									<li>To perform Service-related services; or</li>
+									<li>To assist us in analyzing how our Service is used.</li>
+									</p>
+									<p><strong>Security</strong></p>
+									<p>We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
+									<p><strong>Links to Other Sites</strong></p>
+									<p>This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+									<p><strong>Children’s Privacy</strong></p>
+									<p>These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13 years of age. In the case we discover that a child under 13 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to do necessary actions.</p>
+									<p><strong>Changes to This Privacy Policy</strong></p>
+									<p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+									<p>This policy is effective as of 2021-06-30</p>
+									<p><strong>Contact Us</strong></p>
+									<p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <strong>info@medeazy.in</strong></p>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</main><!-- End #main -->
+
+			<!-- ======= Footer ======= -->
+			<footer id="footer">
+				<!-- ======= Terms & Condition ======= -->
+				<div class="modal fade bd-example-modal-lg" id="Terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title text-center" id="exampleModalLabel">Terms & Conditions</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" style="white-space: pre-wrap">
+								<ul>
+                             <p><strong>By downloading or using the app,</strong> these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You’re not allowed to copy, or modify the app, any part of the app, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the app, and you also shouldn’t try to translate the app into other languages, or make derivative versions. The app itself, and all the trade marks, copyright, database rights and other intellectual property rights related to it, still belong to MedEazy.</p>
+							<p>MedEazy is committed to ensuring that the app is as useful and efficient as possible. For that reason, we reserve the right to make changes to the app or to charge for its services, at any time and for any reason. <strong>We will never charge you</strong> for the app or its services without making it very clear to you exactly what you’re paying for.</p>
+							<p>The MedEazy app stores and processes personal data that you have provided to us, in order to provide our Service. It’s your responsibility to keep your phone and access to the app secure. We therefore recommend that you do not jailbreak or root your phone, which is the process of removing software restrictions and limitations imposed by the official operating system of your device. It could make your phone vulnerable to malware/viruses/malicious programs, compromise your phone’s security features and it could mean that the MedEazy app won’t work properly or at all.</p>
+							<p>The app<strong> does use third party services </strong>that declare their own Terms and Conditions.</p><p>Link to Terms and Conditions of third party service providers used by the app</p>
+								    <li><strong>Google Play Services</strong></li>
+									<li><strong>Google Analytics for Firebase</strong></li>
+									<li><strong>Firebase Crashlytics</strong></li>
+									<li><strong>One Signal</strong></li>
+							<P>You should be aware that there are certain things that <strong>MedEazy will not take responsibility for</strong>. Certain functions of the app will require the app to have an active internet connection. The connection can be Wi-Fi, or provided by your mobile network provider, but MedEazy cannot take responsibility for the app not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.</P>
+							<P>If you’re using the app outside of an area with Wi-Fi, you should remember that your terms of the agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you’re accepting responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you’re using the app, please be aware that we assume that you have received permission from the bill payer for using the app.</P>
+							<P>Along the same lines, MedEazy cannot always take responsibility for the way you use the app i.e. You need to make sure that your device stays charged – if it runs out of battery and you can’t turn it on to avail the Service, Medeazy cannot accept responsibility.</P>
+							<p>With respect to MedEazy’s responsibility for your use of the app, when you’re using the app, it’s important to bear in mind that although we endeavour to ensure that it is updated and correct at all times, we do rely on third parties to provide information to us so that we can make it available to you. MedEazy accepts no liability for any loss, direct or indirect, you experience as a result of relying wholly on this functionality of the app.</p>
+							<p>At some point, we may wish to update the app. The app is currently available on Android – the requirements for system(and for any additional systems we decide to extend the availability of the app to) may change, and you’ll need to download the updates if you want to keep using the app. MedEazy does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you promise to always accept updates to the application when offered to you, We may also wish to stop providing the app, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.</p>
+									<p><strong>Changes to This Terms and Conditions</strong></p>
+
+								<P>We may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Terms and Conditions on this page.</p>
+							<p><strong>These terms and conditions are effective as of 2021-06-30</strong></p>
+									<p>If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at <strong>info@medeazy.in</strong></p>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="footer-top">
+					<div class="container">
+						<div class="row">
+
+							<div class="col-lg-3 col-md-6 footer-contact">
+								<h3>MEDEAZY</h3>
+								<p>
+									128/A , C/o.Dr.Nandu Babu, Kendua Bazar, <br>
+									PO:-Kusunda, Dhanbad, PIN:- 828116<br>
+									Jharkhand<br>
+									INDIA<br><br>
+									<strong>Phone:</strong> +91 7564947428<br>
+									<strong>Email:</strong> info@medeazy.in<br>
+								</p>
+							</div>
+
+							<div class="col-lg-3 col-md-6 footer-links">
+								<h4>Useful Links</h4>
+								<ul>
+									<li><i class="bx bx-chevron-right"></i> <a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp">Manufacturers</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp">Health Conditions</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp">Buy Medicines</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp">Lab Tests</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp">Blogs</a></li>
+								</ul>
+							</div>
+
+							<div class="col-lg-3 col-md-6 footer-links">
+								<h4>Our Services</h4>
+								<ul>
+									<li><i class="bx bx-chevron-right"></i> <a href="#why-us">About us</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="#Terms" data-toggle="modal" data-target="#Terms">Terms & Conditions</a></li>
+									<li><i class="bx bx-chevron-right"></i> <a href="#Privacy" data-toggle="modal" data-target="#Privacy">Privacy Policy</a></li>
+								</ul>
+							</div>
+
+							<div class="col-lg-3 col-md-6 footer-links">
+								<h4>Our Social Networks</h4>
+								<p>We are connected through this below social sites, You can contact us through this.</p>
+								<div class="social-links mt-3">
+									<a href="https://www.facebook.com/medeazy.in" class="facebook"><i class="bx bxl-facebook"></i></a>
+									<a href="https://www.instagram.com/medeazy.in/" class="instagram"><i class="bx bxl-instagram"></i></a>
+									<a href="#" class="google-plus"><i class="bx bxl-youtube"></i></a>
+
+								</div>
+								<br>
+								<a href="https://play.google.com/store/apps/details?id=com.firstaid.pharmacyapp"><img  src="/img/gplay.png" alt="..."  class="mr-3"></a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="container footer-bottom clearfix">
+					<div class="copyright">
+						&copy; Copyright <strong><span>MEDEAZY</span></strong>. All Rights Reserved
+					</div>
+					<div class="credits">
+
+						Designed by <a href="https://www.linkedin.com/in/subham-sarkar-573503205">SUBHAM SARKAR</a>
+					</div>
+				</div>
+			</footer><!-- End Footer -->
+
+
+		</div>
+
+
+
+
+
+
+
+		<div  sec:authorize="isAuthenticated()">
+<!--			<h1>-->
+<!--				Hello, <span sec:authentication="name"></span> !-->
+<!--			</h1>-->
+
+
+
+		          	<!-- ADMIN PAGE FOR UPLOADING AND DOWNLOADING -->
+
+			<div sec:authorize="hasRole('ROLE_ADMIN')">
+
+
+				<!-- ======= Header ======= -->
+				<header id="header" class="fixed-top"  style=" background: linear-gradient(324deg, rgba(48,207,208,1) 0%, rgba(144,238,144,1) 48%, rgba(0,212,255,1) 100%);">
+					<div class="container d-flex align-items-center">
+
+
+
+
+
+
+
+						<img  src="/img/medezy.jpeg" alt="..." width="70" height="70" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+						<h1 class="logo me-auto"><a href="">MedEazy</a></h1>
+						<!-- Uncomment below if you prefer to use an image logo -->
+						<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+						<nav id="navbar" class="navbar">
+
+
+							<ul>
+								<li class="active"><a href="/">Home</a></li>
+								<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/users">All-users</a></li>
+								<li class="dropdown"><a href="#"><span>Notice Section</span> <i class="bi bi-chevron-right"></i></a>
+
+
+									<ul>
+
+										<li><a href="/noticepage" th:href="@{/noticepage}">All-Notice</a></li>
+										<li><a href="/noticeupload" th:href="@{/noticeupload}">Post-Notice</a></li>
+										<li><a href="/noticedelete" th:href="@{/noticedelete}">Delete-Notice</a></li>
+									</ul>
+								</li>
+								<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
+								<li class="dropdown" sec:authorize="!isAuthenticated()"><a class="getstarted scrollto text-center" href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
+
+									<ul>
+										<li><a href="/registrasi"> <i class="fas fa-user-circle"></i>Sign Up</a></li>
+
+										<li><a href="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+
+									</ul>
+								</li>
+
+								<ul class="nav navbar-nav navbar-right"
+									sec:authorize="isAuthenticated()">
+									<li class="dropdown"><a class="dropdown-toggle"
+															data-toggle="dropdown" href="#" sec:authentication="name"><span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="/logout">Logout</a></li>
+										</ul></li>
+								</ul>
+								<form class="d-flex" id="searchbar" action="/search" method="get">
+									<input aria-label="Search" class="form-control me-2" name="search" placeholder="Search notice by title" type="search">
+									<button class="btn btn-info btn-sm " type="submit">Search</button>
+								</form>
+							</ul>
+							<i class="mobile-nav-toggle bi bi-list "></i>
+
+						</nav><!-- .navbar -->
+
+					</div>
+				</header><!-- End Header -->
+
+
+
+
+
+
+                <br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<div class="container">
+					<h1 class="adminh1">
+						Hello, <span sec:authentication="name"></span> ! you are Admin
+						<br>
+						You can post/delete notice for MedEazy. @notice Section. Thank You!
+					</h1>
+				</div>
+
+
+			</div>
+
+
+
+
+		                       	<!-- USER PAGE AFTER LOGIN -->
+			<div sec:authorize="hasRole('ROLE_MEMBER')">
+
+
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/vendor/aos/aos.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/vendor/php-email-form/validate.js"></script>
+<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/vendor/waypoints/noframework.waypoints.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+
+
+<!-- Template Main JS File -->
+
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/index.js}"></script>
+
+
+
+</body>
+</html>

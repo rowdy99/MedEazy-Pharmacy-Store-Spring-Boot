@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MedEazy Search-Result</title>
+    <link rel="icon" href="/img/medezy.jpeg" />
+
+    <script src="https://kit.fontawesome.com/3c78e2f7ea.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu:wght@700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet">
+    <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+</head>
+<style>
+    .notice-title{
+        font-weight: bold;
+
+    }
+
+    tr{
+        transition: all .2s ease-in;
+        cursor: pointer;
+    }
+
+    tr:hover{
+        background-color: #f5f5f5;
+        transform: scale(1.02);
+    }
+    #example{
+        border-collapse: collapse;
+    }
+
+</style>
+<body class="galary-body">
+
+
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top" style=" background: linear-gradient(324deg, rgba(48,207,208,1) 0%, rgba(144,238,144,1) 48%, rgba(0,212,255,1) 100%);">
+        <div class="container d-flex align-items-center">
+
+
+
+
+
+
+
+            <img  src="/img/medezy.jpeg" alt="..." width="70" height="70" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <h1 class="logo me-auto"><a href="">MedEazy</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar">
+
+
+                <ul>
+                    <li class="active"><a href="/">Home</a></li>
+
+
+                    <li><a href="/noticepage" th:href="@{/noticepage}">Notice</a></li>
+                    <li><a class="nav-link scrollto" href="/contact_form"  th:href="@{/contact_form}">Franchise partner</a></li>
+
+                    <li class="dropdown" sec:authorize="!isAuthenticated()"><a class="getstarted scrollto text-center" href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
+
+                        <ul>
+                            <li><a href="/registrasi"> <i class="fas fa-user-circle"></i>Sign Up</a></li>
+
+                            <li><a href="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+
+                        </ul>
+                    </li>
+
+                    <ul class="nav navbar-nav navbar-right"
+                        sec:authorize="isAuthenticated()">
+                        <li class="dropdown"><a class="dropdown-toggle"
+                                                data-toggle="dropdown" href="#" sec:authentication="name"><span
+                                class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">Logout</a></li>
+                            </ul></li>
+                    </ul>
+                    <form class="d-flex" id="searchbar" action="/search" method="get">
+                        <input aria-label="Search" class="form-control me-2" name="search" placeholder="Search notice by title" type="search">
+                        <button class="btn btn-info btn-sm " type="submit">Search</button>
+                    </form>
+                </ul>
+                <i class="mobile-nav-toggle bi bi-list "></i>
+
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <br>
+    <br>
+    <br>
+
+
+
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media  align-items-center">
+
+            <div class="book-body text-center">
+                <img loading="lazy" src="../img/noticeboard.png" alt="..." width="80" height="80" class=" rounded-circle img-thumbnail shadow-sm">
+                <h4 class="brand text-center m-1">MedEazy</h4>
+                <p class=" brand-des font-weight-normal text-muted text-center mb-0">MedEazy Notice</p>
+                <p class=" brand-des font-weight-normal text-muted text-center mb-0">@medeazy.in  · Pharmacy / Drugstore</p>
+            </div>
+            <br>
+
+        </div>
+    </div>
+    <h4 class="brand text-center m-1 text-center">MedEazy All Notice</h4>
+    <br>
+    <br>
+    <!--    <div class="row">-->
+
+
+    <table id="example" class="table table-striped table-bordered text-center table-light">
+        <thead>
+        <tr>
+
+            <th>Notice-Title</th>
+            <th>Content</th>
+
+        </tr>
+        </thead>
+        <tbody th:with="count=0">
+        <tr class="table-light" th:each="n:${notice}" >
+            <td><h5 class="notice-title" th:text="${n.noticeTitle}"></h5></td>
+
+            <td><button type="button" class="btn btn-success btn-sm m-1"  data-toggle="modal"  th:attr="data-target='#c'+${n.id}">
+                Read
+            </button></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <div class="preview" th:each="n:${notice}">
+        <div class="modal fade bd-example-modal-lg" th:id="'c'+${n.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel" th:text="${n.noticeTitle}"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="white-space: pre-wrap" th:text="${n.content}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+</body>
+</html>
+
+
+
+
